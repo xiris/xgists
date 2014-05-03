@@ -6,28 +6,30 @@ var github = new OAuth2('github', {
 });
 
 github.authorize(function() {
-    //document.addEventListener('DOMContentLoaded', function() {
     console.log(github.getAccessToken());
     // Make an XHR that creates the task
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(event) {
         if (xhr.readyState == 4) {
+            document.querySelector('#loading').style.display='block';
             if(xhr.status == 200) {
+                document.querySelector('#loading').style.display='none';
                 // Great success: parse response with JSON
                 console.log('xGists: Granted access');
-                console.log(xhr);
-                console.log(xhr.responseText);
                 var dataata = JSON.parse(xhr.responseText);
                 var html = '';
                 dataata.forEach(function(item, index) {
-                    html += '<li>' + item.id + '</li>';
+
+                    html += '<a href="'+item.url+'" class="list-group-item">';
+                    html += '<span class="glyphicon glyphicon-chevron-right"></span>&nbsp; ';
+                    html += item.description;
+                    html += '</a>';
                 });
                 document.querySelector('#result').innerHTML = html;
                 return;
 
             } else {
                 console.log('xGists: Revoked access');
-                console.log(xhr);
             }
         }
     };
