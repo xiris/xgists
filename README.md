@@ -7,9 +7,9 @@ Maintainer: [Christopher Silva](https://github.com/xiris) ([@xiris_](http://twit
 
 ## Contribute
 
-See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)
+todo
 
 
 ## License
 
-[BSD license](http://opensource.org/licenses/bsd-license.php)
+[MIT license](http://opensource.org/licenses/MIT)
