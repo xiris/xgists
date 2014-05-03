@@ -1,0 +1,4 @@
+.popup { font: 14px/18px "Trebuchet MS", Arial, Helvetica, sans-serif; color: #888888; }
+#page { margin:0 auto; padding:0px; width:400px; text-align: left; height: auto; }
+#main { position: relative; top: 0px; left: 0px; width:400px; }
+/*#content { width:400px; }*/

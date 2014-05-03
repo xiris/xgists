@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+
+    "name": "x.Gists Application (v1.0.0)",
+    "version": "1.0.0",
+    "description": "Create and list gists - by @xiris_",
+
+    "icons": {
+        "16": "images/icon.png",
+        "64": "images/icon.png",
+        "128": "images/icon.png"
+    },
+
+    "browser_action": {
+        "default_title": "x.Gists Application - by @xiris_",
+        "default_icon": "images/icon.png",
+        "default_popup": "xgist.html"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["https://github.com/robots.txt*"],
+            "js": ["library/oauth2/oauth2_inject.js"],
+            "run_at": "document_start"
+        }
+    ],
+
+    "permissions": [
+        "tabs",
+        "chrome://favicon/",
+        "clipboardRead",
+        "contextMenus",
+        "notifications",
+        "https://github.com/",
+        "https://api.github.com/",
+        "https://api.github.com/gists",
+        "https://github.com/login/oauth/access_token"
+    ],
+
+    "web_accessible_resources" : [
+        "library/oauth2/oauth2.html"
+    ]
+}
