@@ -40,3 +40,5 @@ github.authorize(function() {
 
     xhr.send();
 });
+
+$(function () { $("[data-toggle='tooltip']").tooltip(); });

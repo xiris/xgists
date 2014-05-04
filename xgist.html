@@ -10,7 +10,7 @@
 <body class="popup">
     <div id="xgist" class="general">
         <div class="container">
-            <h1 class="logo">xGist Application</h1>
+            <h1 class="logo">x.Gists Application</h1>
             <div class="panel-group" id="accordion">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -21,13 +21,36 @@
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <form class="form-add form-horizontal">
-                                <input type="text" class="input-block-level" placeholder="Description">
-                                <input type="text" class="input-block-level" placeholder="Filename">
-                                <input type="text-area" class="input-block-level" placeholder="Content">
-                                <label class="checkbox">
-                                    <input type="checkbox" value="private"> Remember me
-                                </label>
-                                <button class="btn btn-large btn-primary" type="submit">Create gist</button>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="inputDescription" class="col-lg-2 control-label">Description</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" id="inputDescription">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputFilename" class="col-lg-2 control-label">File name</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" id="inputFilename" placeholder="File name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="textareaEditor" class="col-lg-2 control-label">Content</label>
+                                        <div class="col-lg-10">
+                                            <textarea class="form-control" rows="3" id="textareaEditor"></textarea>
+                                            <span class="help-block">Enter your code above.</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-10 col-lg-offset-2">
+                                            <button type="button" class="btn btn-warning"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    data-original-title="Secret gist are hidden from search engines but visible to anyone you give the URL.">Create secret gist</button>
+                                            <button type="submit" class="btn btn-primary" placeholder="Description">Create gist</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </form>
                         </div>
                     </div><!-- /collapseOne -->
@@ -52,6 +75,7 @@
             </div><!-- /accordion -->
 
             <div class="messages"></div>
+            <address><span>x.Gists Application - by @xiris_</span></address>
         </div> <!-- /container -->
     </div><!-- /general -->
 
