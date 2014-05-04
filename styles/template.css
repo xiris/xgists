@@ -1,1 +1,2 @@
-.general { margin:0 auto; padding: 0px; width: 450px; text-align: left; height: auto; }
+.general { margin: 0 auto; padding: 0px; width: 450px; text-align: left; height: auto; background: #333; }
+.logo{ width: 200px; height: 70px; overflow: hidden; text-indent: -9999px; background: url('../images/logo.png'); text-align: center; margin: 0 auto;}

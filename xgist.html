@@ -10,30 +10,29 @@
 <body class="popup">
     <div id="xgist" class="general">
         <div class="container">
-            <h1>xGist Application</h1>
+            <h1 class="logo">xGist Application</h1>
             <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                Create new Gist
-                            </a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Create new Gist</a>
                         </h4>
                     </div><!-- /panel-heading -->
-                    <div id="collapseOne" class="panel-collapse collapse">
+                    <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <form class="form-add form-horizontal well">
-                                <input type="text" class="input-block-level" placeholder="Email address">
-                                <input type="password" class="input-block-level" placeholder="Password">
+                            <form class="form-add form-horizontal">
+                                <input type="text" class="input-block-level" placeholder="Description">
+                                <input type="text" class="input-block-level" placeholder="Filename">
+                                <input type="text-area" class="input-block-level" placeholder="Content">
                                 <label class="checkbox">
-                                    <input type="checkbox" value="remember-me"> Remember me
+                                    <input type="checkbox" value="private"> Remember me
                                 </label>
-                                <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+                                <button class="btn btn-large btn-primary" type="submit">Create gist</button>
                             </form>
                         </div>
                     </div><!-- /collapseOne -->
                 </div><!-- /panel -->
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
@@ -53,7 +52,6 @@
             </div><!-- /accordion -->
 
             <div class="messages"></div>
-            <a href="/options.html" target="_blank" title="Show options">Options</a>
         </div> <!-- /container -->
     </div><!-- /general -->
 
