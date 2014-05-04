@@ -12,7 +12,7 @@
         <div class="container">
             <h1 class="logo">x.Gists Application</h1>
             <div class="panel-group" id="accordion">
-                <div class="panel panel-primary">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Create new Gist</a>
@@ -52,11 +52,25 @@
                                     </div>
                                 </fieldset>
                             </form>
-                        </div>
+                        </div><!-- /panel-body -->
                     </div><!-- /collapseOne -->
                 </div><!-- /panel -->
-                <div class="panel panel-primary">
+                <div class="panel panel-default">
                     <div class="panel-heading">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu slidedown">
+                                <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="http://www.github.com/" title="Link to github account" target="_blank">
+                                        <i class="glyphicon glyphicon-user"></i> My account
+                                    </a>
+                                </li>
+                            </ul>
+                        </div><!-- /btn-group -->
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                                 List my gists
@@ -75,13 +89,13 @@
             </div><!-- /accordion -->
 
             <div class="messages"></div>
-            <address><span>x.Gists Application - by @xiris_</span></address>
         </div> <!-- /container -->
     </div><!-- /general -->
 
-    <script src="library/oauth2/oauth2.js"></script>
-    <script src="library/jquery-1.11.1.min.js"></script>
-    <script src="library/bootstrap/js/bootstrap.min.js"></script>
-    <script src="scripts/xgist.js"></script>
+    <script type="text/javascript" src="library/oauth2/oauth2.js"></script>
+    <script type="text/javascript" src="library/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="library/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/xgist.ajax.js"></script>
+    <script type="text/javascript" src="scripts/xgist.js"></script>
 </body>
 </html>

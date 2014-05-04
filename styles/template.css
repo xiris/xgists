@@ -1,2 +1,7 @@
-.general { margin: 0 auto; padding: 0px; width: 450px; text-align: left; height: auto; background: #333; }
+.general { margin: 0 auto; padding: 0px; width: 450px; text-align: left; height: auto; }
 .logo{ width: 200px; height: 70px; overflow: hidden; text-indent: -9999px; background: url('../images/logo.png'); text-align: center; margin: 0 auto;}
+address{color: #CCC;}
+.dropdown-menu li {font-size:10px;}
+.list-group-item{font-size: 12px;}
+.list-group{ margin-bottom:0; }
+#loading{text-align: center; margin: 0 auto;}
