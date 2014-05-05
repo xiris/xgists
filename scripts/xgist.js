@@ -1,4 +1,4 @@
-
+var submitPrivate, submitPublic, formGist, refresh, gistDescription, gistFilename, gistContent;
 var apiUrl  = 'https://api.github.com/';
 var baseUrl = 'http://www.phpcomleite.com.br/';
 var github   = new OAuth2('github', {
@@ -23,6 +23,8 @@ function getGists()
         var resource = 'gists';
         var url = apiUrl+resource;
         console.log('sending request ...');
+        $('#collapseTwo .loading').attr('style', 'display:block');
+        $('#collapseTwo #result').attr('style', 'display:none');
         sendRequest(url, prepareData, github.getAccessToken(),'');
     });
 }
@@ -47,7 +49,8 @@ function prepareData(data)
         html += '</h5><p class="list-group-item-text">'+public+language+'</p>'
         html += '</a>';
     });
-
+    $('#collapseTwo .loading').attr('style', 'display:none');
+    $('#collapseTwo #result').attr('style', 'display:block');
     document.querySelector('#result').innerHTML = html;
     return;
 }
@@ -68,22 +71,74 @@ function getFilesInfos(files)
     return data;
 }
 
+/**
+ * submitGist()
+ *
+ * @param type
+ */
+function submitGist(type)
+{
+    event.preventDefault();
+    var public = (type == 'public') ? true : false;
+    var data = getJsonObjectCreateGist(public);
+    data = JSON.stringify(data);
+    console.log(data);
+    github.authorize(function(){
+        var resource = 'gists';
+        var url = apiUrl+resource;
+        sendRequest(url, submitGistReturn, github.getAccessToken(), data);
+    });
+}
+
+/**
+ *
+ * @param data
+ */
+function submitGistReturn(data)
+{
+    $('#collapseOne .alert').show('fast');
+}
+
+/**
+ * getJsonObjectCreateGist()
+ * @param type
+ * @returns {Object}
+ */
+function getJsonObjectCreateGist(public)
+{
+    var data = new Object();
+    data.description = gistDescription.value;
+    data.public = public;
+    data.files = new Object();
+    data.files[gistFilename.value] = {"content": gistContent.value};
+
+    return data;
+}
+
 $(function () {
     $("[data-toggle='tooltip']").tooltip();
 });
 
 window.addEventListener("DOMContentLoaded", function () {
-    logo = document.querySelector(".logo");
     refresh = document.querySelector("#refresh");
-    /*logo.addEventListener("click", function(){
-        background.msgHandlerOpenTab({url: baseUrl + "/Home.action"})
-    });*/
+    submitPrivate = document.querySelector("#submit-private");
+    submitPublic = document.querySelector("#submit-public");
+    gistDescription = document.querySelector("#inputDescription");
+    gistFilename = document.querySelector("#inputFilename");
+    gistContent = document.querySelector("#textareaContent");
+
+    //clicking refresh action
     refresh.addEventListener("click", function(){
         getGists();
-    })
+    });
 
+    //submit private gist
+    submitPrivate.addEventListener("click", function(event){
+        submitGist('private')
+    });
 
-
-
-
+    //submit public gist
+    submitPublic.addEventListener("click", function(event){
+        submitGist('public')
+    });
 });

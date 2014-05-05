@@ -43,40 +43,24 @@ function sendRequest(url, callback, token, data) {
     var xhr = createXMLHTTPObject();
     if (!xhr) return;
     var method = (data) ? "POST" : "GET";
+    try {
+        xhr.open(method, url, true);
+        xhr.setRequestHeader('Content-type','application/json');
 
-    loading('show');
-    xhr.open(method, url, true);
-    xhr.setRequestHeader('Content-type','application/json');
+        if(token)
+            xhr.setRequestHeader('Authorization', 'token ' + token);
 
-    if(token)
-        xhr.setRequestHeader('Authorization', 'token ' + token);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200 || xhr.status == 201) return;
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            loading('show');
-            if (xhr.status == 200) {
-                loading('hide');
-                callback(xhr);
-            }
-        } else {
-            // error request: revoke access
-            return;
+            callback(xhr);
         }
+
+        xhr.send(data);
+    } catch() {
+        alert('error');
     }
-
-    xhr.send(data);
 }
 
-/**
- * loading()
- *
- * @param behavior
- */
-function loading(behavior)
-{
-    var displayLoading = (behavior=='show') ? 'block' : 'none';
-    var displayResult = (behavior=='show') ? 'none' : 'block';
-    document.querySelector('#result').style.display=displayResult
-    document.querySelector('#loading').style.display=displayLoading;
-}
 
