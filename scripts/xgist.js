@@ -100,10 +100,12 @@ function submitGist(type)
 function createGistReturn(data)
 {
     console.log('gist created ...');
+    var data = JSON.parse(data.responseText);
+    var htmlUrl = data.html_url;
 
-    $('#form-gist').reset();
     $('#collapseOne .alert').removeClass('alert-warning');
     $('#collapseOne .alert').addClass('alert-success');
+    $('#message-add-gist').after('<span class="html-url">'+htmlUrl+'</span>');
     $('#collapseOne .alert').fadeIn('slow');
 }
 
