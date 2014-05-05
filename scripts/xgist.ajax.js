@@ -43,24 +43,21 @@ function sendRequest(url, callback, token, data) {
     var xhr = createXMLHTTPObject();
     if (!xhr) return;
     var method = (data) ? "POST" : "GET";
-    try {
-        xhr.open(method, url, true);
-        xhr.setRequestHeader('Content-type','application/json');
 
-        if(token)
-            xhr.setRequestHeader('Authorization', 'token ' + token);
+    xhr.open(method, url, true);
+    xhr.setRequestHeader('Content-type','application/json');
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState != 4) return;
-            if (xhr.status != 200 || xhr.status == 201) return;
+    if(token)
+        xhr.setRequestHeader('Authorization', 'token ' + token);
 
-            callback(xhr);
-        }
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState != 4) return;
+        if (xhr.status != 200 || xhr.status == 201) return;
 
-        xhr.send(data);
-    } catch() {
-        alert('error');
+        callback(xhr);
     }
+
+    xhr.send(data);
 }
 
 
