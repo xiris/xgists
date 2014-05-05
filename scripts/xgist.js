@@ -81,6 +81,7 @@ function getFilesInfos(files)
 function submitGist(type)
 {
     event.preventDefault();
+
     var public = (type == 'public') ? true : false;
     var data = getJsonObjectCreateGist(public);
     data = JSON.stringify(data);
