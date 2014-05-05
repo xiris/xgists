@@ -25,7 +25,7 @@
                                 <strong>Success!</strong> <span id="message-add-gist">Gist successfully created.</span>
                             </div>
                             <div class="loading"><img src="images/loading.gif" title="loading" alt="loading"/></div>
-                            <form action="#" class="form-add form-horizontal" id="form-gist">
+                            <form data-toggle="validator" class="form-add form-horizontal" id="form-gist">
                                 <fieldset>
                                     <div class="form-group">
                                         <label for="inputDescription" class="col-lg-2 control-label">Description</label>
@@ -37,6 +37,7 @@
                                         <label for="inputFilename" class="col-lg-2 control-label">File name</label>
                                         <div class="col-lg-10">
                                             <input type="text" class="form-control" id="inputFilename" placeholder="File name">
+                                            <span class="help-block">Enter filename without numbers or special characters (eg: xgists.php)</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -100,6 +101,7 @@
     <script type="text/javascript" src="library/oauth2/oauth2.js"></script>
     <script type="text/javascript" src="library/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="library/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="library/jquery.validate.js"></script>-->
     <script type="text/javascript" src="scripts/xgist.ajax.js"></script>
     <script type="text/javascript" src="scripts/xgist.js"></script>
 </body>

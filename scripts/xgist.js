@@ -6,7 +6,9 @@ var github   = new OAuth2('github', {
     client_secret: 'adc57ff77595b8ec11e1c2b3910a0f5ef9f46eaf',
     api_scope:'gist'
 });
-
+/**
+ * authorizing on page load
+ */
 github.authorize(function() {
     if (github.hasAccessToken()) {
        getGists();
@@ -43,7 +45,7 @@ function prepareData(data)
         var language = (file.language==null) ? '': ' <span class="label label-default">'+file.language+'</span>';
         var public = (item.public) ? '': ' <span class="label label-warning">Private</span>';
         var copy = '<span class="badge" title="Copy gist url to clipboard">copy url</span>';
-        html += '<a href="'+item.url+'" class="list-group-item">';
+        html += '<a href="'+item.html_url+'" class="list-group-item" target="_blank">';
         html += '<h5 class="list-group-item-heading"> ';
         html += item.description;
         html += '</h5><p class="list-group-item-text">'+public+language+'</p>'
@@ -82,11 +84,11 @@ function submitGist(type)
     var public = (type == 'public') ? true : false;
     var data = getJsonObjectCreateGist(public);
     data = JSON.stringify(data);
-    console.log(data);
+
     github.authorize(function(){
         var resource = 'gists';
         var url = apiUrl+resource;
-        sendRequest(url, submitGistReturn, github.getAccessToken(), data);
+        sendRequest(url, createGistReturn, github.getAccessToken(), data);
     });
 }
 
@@ -94,9 +96,12 @@ function submitGist(type)
  *
  * @param data
  */
-function submitGistReturn(data)
+function createGistReturn(data)
 {
-    $('#collapseOne .alert').show('fast');
+    console.log('gist created ...');
+
+    $('#form-gist').reset;
+    $('#collapseOne .alert').show('slow');
 }
 
 /**
@@ -140,5 +145,10 @@ window.addEventListener("DOMContentLoaded", function () {
     //submit public gist
     submitPublic.addEventListener("click", function(event){
         submitGist('public')
+    });
+
+    gistFilename.addEventListener('keyup', function(event){
+
+        this.value = this.value.replace(/[^A-Za-z.]/g,"");
     });
 });

@@ -52,9 +52,9 @@ function sendRequest(url, callback, token, data) {
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState != 4) return;
-        if (xhr.status != 200 || xhr.status == 201) return;
-
-        callback(xhr);
+        if (xhr.status == 200 || xhr.status == 201) {
+            callback(xhr);
+        }
     }
 
     xhr.send(data);
