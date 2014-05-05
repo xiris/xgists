@@ -4,6 +4,8 @@
     "name": "x.Gists Application (v1.0.0)",
     "version": "1.0.0",
     "description": "Create and list gists - by @xiris_",
+    "author": "Christopher Silva",
+    "update_url": "https://clients2.google.com/service/update2/crx",
 
     "icons": {
         "16": "images/icon.png",
@@ -24,6 +26,8 @@
             "run_at": "document_start"
         }
     ],
+
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 
     "permissions": [
         "tabs",

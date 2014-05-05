@@ -101,8 +101,10 @@ function createGistReturn(data)
 {
     console.log('gist created ...');
 
-    $('#form-gist').reset;
-    $('#collapseOne .alert').show('slow');
+    $('#form-gist').reset();
+    $('#collapseOne .alert').removeClass('alert-warning');
+    $('#collapseOne .alert').addClass('alert-success');
+    $('#collapseOne .alert').fadeIn('slow');
 }
 
 /**
@@ -123,6 +125,12 @@ function getJsonObjectCreateGist(public)
 
 $(function () {
     $("[data-toggle='tooltip']").tooltip();
+    if(!github.hasAccessToken()) {
+       $('#message-add-gist').html('Please, login github first to authorize the app.');
+       $('#collapseOne .alert').removeClass('alert-success');
+       $('#collapseOne .alert').addClass('alert-warning');
+       $('#collapseOne .alert').fadeIn('slow');
+    }
 });
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -149,7 +157,6 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 
     gistFilename.addEventListener('keyup', function(event){
-
         this.value = this.value.replace(/[^A-Za-z.]/g,"");
     });
 });
